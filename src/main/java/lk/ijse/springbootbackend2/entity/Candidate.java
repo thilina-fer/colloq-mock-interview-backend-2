@@ -1,0 +1,28 @@
+package lk.ijse.springbootbackend2.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Candidate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long candidateId;
+//    private Long authId;
+    private String joinDate;
+    private String bio;
+    private String githubUrl;
+    private String linkedinUrl;
+    private String profilePicture;
+    private String status;
+
+    @OneToOne
+    @JoinColumn(name = "authId")
+    private Auth auth;
+}
